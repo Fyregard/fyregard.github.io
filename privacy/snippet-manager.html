@@ -1,236 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Snippet Manager</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
-
-  <nav>
-    <div class="wrap breadcrumb">
-      <a class="back" href="../index.html">← Portfolio</a>
-      <span class="sep">/</span>
-      <span class="crumb">Privacy · Snippet Manager</span>
-    </div>
-  </nav>
-
-  <div class="wrap">
-
-    <header class="doc-header">
-      <p class="doc-label">// privacy policy</p>
-      <h1>Snippet Manager</h1>
-      <div class="doc-meta">
-        <span>Effective <strong>8 March 2026</strong></span>
-        <span>Last updated <strong>8 March 2026</strong></span>
-        <span>Version <strong>1.0</strong></span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — Snippet Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="wrap breadcrumb">
+        <a class="back" href="../index.html">← Portfolio</a>
+        <span class="sep">/</span>
+        <span class="crumb">Privacy · Snippet Manager</span>
       </div>
-    </header>
+    </nav>
 
-    <!-- PLAIN-LANGUAGE SUMMARY -->
-    <div class="summary-box">
-      <p class="summary-label">// plain english summary</p>
-      <p>Here's what matters most, before you read the full policy:</p>
-      <ul class="summary-points">
-        <li><span class="icon">✓</span> Your snippets are stored locally in your browser and, optionally, in your own Google Drive account.</li>
-        <li><span class="icon">✓</span> We do not operate any servers. We never see, collect, or transmit your snippets.</li>
-        <li><span class="icon">✓</span> Google Drive sync is optional and uses your own Google account — you remain in control.</li>
-        <li><span class="icon">✓</span> We collect no analytics, no telemetry, and no personal information.</li>
-      </ul>
-    </div>
-
-    <!-- TOC -->
-    <div class="toc">
-      <p class="toc-title">Contents</p>
-      <ol>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#data-collected">Data Collected</a></li>
-        <li><a href="#google-drive">Google Drive Integration</a></li>
-        <li><a href="#permissions">Chrome Permissions</a></li>
-        <li><a href="#third-parties">Third-Party Services</a></li>
-        <li><a href="#data-retention">Data Retention &amp; Deletion</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#changes">Changes to This Policy</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ol>
-    </div>
-
-    <div class="doc-content">
-
-      <div class="policy-section" id="overview">
-        <div class="ps-header">
-          <span class="ps-num">01</span>
-          <h2 class="ps-title">Overview</h2>
+    <div class="wrap">
+      <header class="doc-header">
+        <p class="doc-label">// privacy policy</p>
+        <h1>Snippet Manager</h1>
+        <div class="doc-meta">
+          <span>Effective <strong>8 March 2026</strong></span>
+          <span>Last updated <strong>8 March 2026</strong></span>
+          <span>Version <strong>1.0</strong></span>
         </div>
-        <p>
-          Snippet Manager ("the Extension", "we", "us") is a Chrome browser extension that allows developers to save,
-          preview, and organise HTML, CSS, and JavaScript code snippets. This Privacy Policy explains how the Extension handles your information.
-        </p>
-        <p>
-          <strong>The short version:</strong> we do not collect, store, transmit, or share any personal information.
-          All data remains on your device or in your own Google Drive account.
-        </p>
-      </div>
+      </header>
 
-      <div class="policy-section" id="data-collected">
-        <div class="ps-header">
-          <span class="ps-num">02</span>
-          <h2 class="ps-title">Data Collected</h2>
-        </div>
-        <p>The Extension does <strong>not</strong> collect any of the following:</p>
-        <table class="data-table">
-          <thead>
-            <tr><th>Data Type</th><th>Collected?</th><th>Notes</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Personal identifiers</td>
-              <td>No</td>
-              <td>No name, email, or account required to use the Extension.</td>
-            </tr>
-            <tr>
-              <td>Browsing history</td>
-              <td>No</td>
-              <td>The Extension does not read or record the pages you visit.</td>
-            </tr>
-            <tr>
-              <td>Analytics / telemetry</td>
-              <td>No</td>
-              <td>No usage data, crash reports, or feature telemetry is sent anywhere.</td>
-            </tr>
-            <tr>
-              <td>Snippet content</td>
-              <td>Local only</td>
-              <td>Snippets are stored in <code>chrome.storage.local</code> on your device. If Drive sync is enabled, they are stored in your own Google Drive — never on our servers.</td>
-            </tr>
-            <tr>
-              <td>Google account data</td>
-              <td>No</td>
-              <td>We use OAuth tokens to access Drive on your behalf but do not store or transmit your Google account details.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="policy-section" id="google-drive">
-        <div class="ps-header">
-          <span class="ps-num">03</span>
-          <h2 class="ps-title">Google Drive Integration</h2>
-        </div>
-        <p>
-          Google Drive sync is an <strong>optional</strong> feature. If you enable it, the Extension uses the Google Drive API
-          to read and write a dedicated folder containing your snippet data.
-        </p>
-        <ul class="highlight-list">
-          <li><strong>Scope of access:</strong> The Extension requests only the <code>drive.file</code> scope, which limits access to files it creates. It cannot read or modify other files in your Drive.</li>
-          <li><strong>Data flow:</strong> Snippet data travels directly between your browser and Google's servers using your OAuth token. It does not pass through any server we control.</li>
-          <li><strong>Revocation:</strong> You can revoke Drive access at any time via your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions page</a>.</li>
-          <li><strong>Google's policies:</strong> Use of Google Drive is subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
+      <div class="summary-box">
+        <p class="summary-label">// plain english summary</p>
+        <p>Here's what matters most, before you read the full policy:</p>
+        <ul class="summary-points">
+          <li>
+            <span class="icon">✓</span> Your snippets are stored locally in your
+            browser and, optionally, in your own Google Drive account.
+          </li>
+          <li>
+            <span class="icon">✓</span> We do not operate any servers. We never
+            see, collect, or transmit your snippets.
+          </li>
+          <li>
+            <span class="icon">✓</span> Google Drive sync is optional and uses
+            your own Google account — you remain in control.
+          </li>
+          <li>
+            <span class="icon">✓</span> We collect no analytics, no telemetry,
+            and no personal information.
+          </li>
         </ul>
       </div>
 
-      <div class="policy-section" id="permissions">
-        <div class="ps-header">
-          <span class="ps-num">04</span>
-          <h2 class="ps-title">Chrome Permissions</h2>
-        </div>
-        <p>The Extension requests the following Chrome permissions and uses them solely as described:</p>
-        <table class="data-table">
-          <thead>
-            <tr><th>Permission</th><th>Purpose</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>storage</td>
-              <td>Saves your snippets locally using <code>chrome.storage.local</code>.</td>
-            </tr>
-            <tr>
-              <td>identity</td>
-              <td>Handles Google OAuth flow for optional Drive sync. Used only when you explicitly enable sync.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>No host permissions, tabs access, or broad web access is requested.</p>
+      <div class="toc">
+        <p class="toc-title">Contents</p>
+        <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#data-collected">Data Collected</a></li>
+          <li><a href="#google-drive">Google Drive Integration</a></li>
+          <li><a href="#permissions">Chrome Permissions</a></li>
+          <li><a href="#third-parties">Third-Party Services</a></li>
+          <li><a href="#data-retention">Data Retention &amp; Deletion</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#changes">Changes to This Policy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ol>
       </div>
 
-      <div class="policy-section" id="third-parties">
-        <div class="ps-header">
-          <span class="ps-num">05</span>
-          <h2 class="ps-title">Third-Party Services</h2>
-        </div>
-        <p>
-          The only external service the Extension interacts with is the Google Drive API, and only when you opt in to sync.
-          We do not integrate with any analytics platforms, advertising networks, crash reporting tools, or other third-party services.
-        </p>
-      </div>
-
-      <div class="policy-section" id="data-retention">
-        <div class="ps-header">
-          <span class="ps-num">06</span>
-          <h2 class="ps-title">Data Retention &amp; Deletion</h2>
-        </div>
-        <p>
-          Because we do not collect or store any data on our end, there is nothing for us to retain or delete.
-          Your snippet data lives in two places, both fully under your control:
-        </p>
-        <ul class="highlight-list">
-          <li><strong>Browser storage:</strong> Uninstalling the Extension removes all locally stored snippet data from your browser.</li>
-          <li><strong>Google Drive:</strong> If you enabled sync, your snippet folder remains in your Drive after uninstalling. You can delete it manually at any time.</li>
-        </ul>
-      </div>
-
-      <div class="policy-section" id="security">
-        <div class="ps-header">
-          <span class="ps-num">07</span>
-          <h2 class="ps-title">Security</h2>
-        </div>
-        <p>
-          The Extension does not transmit your data to any server we control, which eliminates the most common attack surface for data breaches.
-          OAuth tokens used for Google Drive are managed by the Chrome identity API and are never exposed to our code in plain text.
-        </p>
-        <p>If you discover a security vulnerability, please contact us at the address below.</p>
-      </div>
-
-      <div class="policy-section" id="changes">
-        <div class="ps-header">
-          <span class="ps-num">08</span>
-          <h2 class="ps-title">Changes to This Policy</h2>
-        </div>
-        <p>
-          If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page
-          and, where appropriate, notify users via the Extension's update notes in the Chrome Web Store.
-        </p>
-        <p>Continued use of the Extension after a policy update constitutes acceptance of the revised terms.</p>
-      </div>
-
-      <div class="policy-section" id="contact">
-        <div class="ps-header">
-          <span class="ps-num">09</span>
-          <h2 class="ps-title">Contact</h2>
-        </div>
-        <p>Questions about this policy? Reach out:</p>
-        <div class="contact-box">
+      <div class="doc-content">
+        <div class="policy-section" id="overview">
+          <div class="ps-header">
+            <span class="ps-num">01</span>
+            <h2 class="ps-title">Overview</h2>
+          </div>
           <p>
-            <strong>Leo Fyregård</strong><br />
-            <a href="mailto:L.Fyregard@hotmail.com">L.Fyregard@hotmail.com</a><br />
-            <a href="https://github.com/Leolojo" target="_blank">github.com/Leolojo</a>
+            Snippet Manager ("the Extension", "we", "us") is a Chrome browser
+            extension that allows developers to save, preview, and organise
+            HTML, CSS, and JavaScript code snippets. This Privacy Policy
+            explains how the Extension handles your information.
+          </p>
+          <p>
+            <strong>The short version:</strong> we do not collect, store,
+            transmit, or share any personal information. All data remains on
+            your device or in your own Google Drive account.
           </p>
         </div>
+
+        <div class="policy-section" id="data-collected">
+          <div class="ps-header">
+            <span class="ps-num">02</span>
+            <h2 class="ps-title">Data Collected</h2>
+          </div>
+          <p>
+            The Extension does <strong>not</strong> collect any of the
+            following:
+          </p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Collected?</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Personal identifiers</td>
+                <td>No</td>
+                <td>
+                  No name, email, or account required to use the Extension.
+                </td>
+              </tr>
+              <tr>
+                <td>Browsing history</td>
+                <td>No</td>
+                <td>
+                  The Extension does not read or record the pages you visit.
+                </td>
+              </tr>
+              <tr>
+                <td>Analytics / telemetry</td>
+                <td>No</td>
+                <td>
+                  No usage data, crash reports, or feature telemetry is sent
+                  anywhere.
+                </td>
+              </tr>
+              <tr>
+                <td>Snippet content</td>
+                <td>Local only</td>
+                <td>
+                  Snippets are stored in <code>chrome.storage.local</code> on
+                  your device. If Drive sync is enabled, they are stored in your
+                  own Google Drive — never on our servers.
+                </td>
+              </tr>
+              <tr>
+                <td>Google account data</td>
+                <td>No</td>
+                <td>
+                  We use OAuth tokens to access Drive on your behalf but do not
+                  store or transmit your Google account details.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="policy-section" id="google-drive">
+          <div class="ps-header">
+            <span class="ps-num">03</span>
+            <h2 class="ps-title">Google Drive Integration</h2>
+          </div>
+          <p>
+            Google Drive sync is an <strong>optional</strong> feature. If you
+            enable it, the Extension uses the Google Drive API to read and write
+            a hidden app data folder in your Google Drive.
+          </p>
+          <ul class="highlight-list">
+            <li>
+              <strong>Scope of access:</strong> The Extension requests only the
+              <code>drive.appdata</code> scope, which limits access to a
+              private, hidden folder created exclusively for this Extension. It
+              cannot read, access, or modify any other files in your Google
+              Drive.
+            </li>
+            <li>
+              <strong>Data flow:</strong> Snippet data travels directly between
+              your browser and Google's servers using your OAuth token. It does
+              not pass through any server we control.
+            </li>
+            <li>
+              <strong>Revocation:</strong> You can revoke Drive access at any
+              time via your
+              <a href="https://myaccount.google.com/permissions" target="_blank"
+                >Google Account permissions page</a
+              >.
+            </li>
+            <li>
+              <strong>Google's policies:</strong> Use of Google Drive is subject
+              to
+              <a href="https://policies.google.com/privacy" target="_blank"
+                >Google's Privacy Policy</a
+              >.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-section" id="permissions">
+          <div class="ps-header">
+            <span class="ps-num">04</span>
+            <h2 class="ps-title">Chrome Permissions</h2>
+          </div>
+          <p>
+            The Extension requests the following Chrome permissions and uses
+            them solely as described:
+          </p>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Permission</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>storage</td>
+                <td>
+                  Saves your snippets locally using
+                  <code>chrome.storage.local</code>.
+                </td>
+              </tr>
+              <tr>
+                <td>identity</td>
+                <td>
+                  Handles Google OAuth flow for optional Drive sync. Used only
+                  when you explicitly enable sync.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            No host permissions, tabs access, or broad web access is requested.
+          </p>
+        </div>
+
+        <div class="policy-section" id="third-parties">
+          <div class="ps-header">
+            <span class="ps-num">05</span>
+            <h2 class="ps-title">Third-Party Services</h2>
+          </div>
+          <p>
+            The only external service the Extension interacts with is the Google
+            Drive API, and only when you opt in to sync. We do not integrate
+            with any analytics platforms, advertising networks, crash reporting
+            tools, or other third-party services.
+          </p>
+        </div>
+
+        <div class="policy-section" id="data-retention">
+          <div class="ps-header">
+            <span class="ps-num">06</span>
+            <h2 class="ps-title">Data Retention &amp; Deletion</h2>
+          </div>
+          <p>
+            Because we do not collect or store any data on our end, there is
+            nothing for us to retain or delete. Your snippet data lives in two
+            places, both fully under your control:
+          </p>
+          <ul class="highlight-list">
+            <li>
+              <strong>Browser storage:</strong> Uninstalling the Extension
+              removes all locally stored snippet data from your browser.
+            </li>
+            <li>
+              <strong>Google Drive:</strong> If you enabled sync, your snippet
+              folder remains in your Drive after uninstalling. You can delete it
+              manually at any time.
+            </li>
+          </ul>
+        </div>
+
+        <div class="policy-section" id="security">
+          <div class="ps-header">
+            <span class="ps-num">07</span>
+            <h2 class="ps-title">Security</h2>
+          </div>
+          <p>
+            The Extension does not transmit your data to any server we control,
+            which eliminates the most common attack surface for data breaches.
+            OAuth tokens used for Google Drive are managed by the Chrome
+            identity API and are never exposed to our code in plain text.
+          </p>
+          <p>
+            If you discover a security vulnerability, please contact us at the
+            address below.
+          </p>
+        </div>
+
+        <div class="policy-section" id="changes">
+          <div class="ps-header">
+            <span class="ps-num">08</span>
+            <h2 class="ps-title">Changes to This Policy</h2>
+          </div>
+          <p>
+            If we make material changes to this privacy policy, we will update
+            the "Last updated" date at the top of this page and, where
+            appropriate, notify users via the Extension's update notes in the
+            Chrome Web Store.
+          </p>
+          <p>
+            Continued use of the Extension after a policy update constitutes
+            acceptance of the revised terms.
+          </p>
+        </div>
+
+        <div class="policy-section" id="contact">
+          <div class="ps-header">
+            <span class="ps-num">09</span>
+            <h2 class="ps-title">Contact</h2>
+          </div>
+          <p>Questions about this policy? Reach out:</p>
+          <div class="contact-box">
+            <p>
+              <strong>Leo Fyregård</strong><br />
+              <a href="mailto:L.Fyregard@hotmail.com">L.Fyregard@hotmail.com</a
+              ><br />
+              <a href="https://github.com/Leolojo" target="_blank"
+                >github.com/Leolojo</a
+              >
+            </p>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
 
-  <footer>
-    <div class="wrap">
-      <p>© 2026 Leo Fyregård · <a href="../index.html">Portfolio</a></p>
-      <p>Snippet Manager Privacy Policy · v1.0</p>
-    </div>
-  </footer>
-
-</body>
+    <footer>
+      <div class="wrap">
+        <p>© 2026 Leo Fyregård · <a href="../index.html">Portfolio</a></p>
+        <p>Snippet Manager Privacy Policy · v1.0</p>
+      </div>
+    </footer>
+  </body>
 </html>
