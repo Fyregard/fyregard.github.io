@@ -3,393 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dev Portfolio</title>
+  <title>Leo Fyregård — Developer Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0d0f14;
-      --surface:   #13161d;
-      --border:    #1f2430;
-      --amber:     #f5a623;
-      --amber-dim: #c27d0e;
-      --green:     #4ade80;
-      --muted:     #4a5060;
-      --text:      #d4d8e2;
-      --text-dim:  #7a8090;
-      --mono:      'JetBrains Mono', monospace;
-      --serif:     'DM Serif Display', serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 14px;
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── Grid texture ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── Glow blob ── */
-    body::after {
-      content: '';
-      position: fixed;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13,15,20,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 14px;
-      padding-bottom: 14px;
-    }
-    .nav-brand {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--amber);
-      letter-spacing: 0.08em;
-      text-decoration: none;
-    }
-    .nav-brand span { color: var(--text-dim); font-weight: 300; }
-    nav ul { list-style: none; display: flex; gap: 28px; }
-    nav a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: var(--amber); }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 100px 0 80px;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-label {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--amber);
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.1s forwards;
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(38px, 7vw, 72px);
-      line-height: 1.05;
-      color: #fff;
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.2s forwards;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--amber);
-    }
-    .hero-sub {
-      max-width: 520px;
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.35s forwards;
-    }
-    .hero-cta {
-      margin-top: 40px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp 0.6s 0.45s forwards;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      border-radius: 3px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--amber);
-      color: #0d0f14;
-      border: 1px solid var(--amber);
-    }
-    .btn-primary:hover {
-      background: #ffc04a;
-      border-color: #ffc04a;
-      transform: translateY(-1px);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-ghost:hover {
-      border-color: var(--amber);
-      color: var(--amber);
-    }
-
-    /* ── SECTION ── */
-    section { padding: 80px 0; border-bottom: 1px solid var(--border); }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-    .section-num {
-      font-size: 11px;
-      color: var(--amber);
-      letter-spacing: 0.15em;
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: 28px;
-      color: #fff;
-      font-weight: 400;
-    }
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── EXTENSIONS GRID ── */
-    .ext-grid { display: grid; gap: 2px; }
-
-    .ext-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 32px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: start;
-      transition: border-color 0.25s, transform 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .ext-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--amber);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-    .ext-card:hover {
-      border-color: rgba(245,166,35,0.3);
-      transform: translateX(4px);
-    }
-    .ext-card:hover::before { opacity: 1; }
-
-    .ext-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
-    }
-    .tag {
-      font-size: 10px;
-      letter-spacing: 0.08em;
-      padding: 3px 8px;
-      border-radius: 2px;
-      background: rgba(245,166,35,0.1);
-      color: var(--amber-dim);
-      border: 1px solid rgba(245,166,35,0.2);
-    }
-    .tag.green {
-      background: rgba(74,222,128,0.08);
-      color: var(--green);
-      border-color: rgba(74,222,128,0.2);
-    }
-    .ext-name {
-      font-family: var(--serif);
-      font-size: 22px;
-      color: #fff;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .ext-desc {
-      color: var(--text-dim);
-      font-size: 13px;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .ext-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .ext-features li {
-      font-size: 12px;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .ext-features li::before {
-      content: '→';
-      color: var(--amber);
-      font-size: 11px;
-    }
-    .ext-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      align-items: flex-end;
-      min-width: 140px;
-    }
-    .ext-status {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      color: var(--green);
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .ext-status::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 6px var(--green);
-      animation: pulse 2s infinite;
-    }
-
-    /* ── PRIVACY SECTION ── */
-    .policy-list {
-      display: grid;
-      gap: 2px;
-    }
-    .policy-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .policy-item:hover {
-      border-color: rgba(245,166,35,0.3);
-      background: rgba(245,166,35,0.04);
-    }
-    .policy-item-left { display: flex; flex-direction: column; gap: 4px; }
-    .policy-item-name {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-    }
-    .policy-item-meta { font-size: 11px; color: var(--text-dim); }
-    .policy-arrow {
-      color: var(--amber);
-      font-size: 18px;
-      transition: transform 0.2s;
-    }
-    .policy-item:hover .policy-arrow { transform: translateX(4px); }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 40px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    footer p { font-size: 11px; color: var(--muted); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--amber); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .ext-card { grid-template-columns: 1fr; }
-      .ext-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
-      footer { flex-direction: column; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <nav>
     <div class="wrap">
-      <a class="nav-brand" href="/">YOUR_NAME<span>.dev</span></a>
+      <a class="nav-brand" href="/">Leolojo<span>.github.io</span></a>
       <ul>
         <li><a href="#extensions">Extensions</a></li>
         <li><a href="#privacy">Privacy</a></li>
-        <li><a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a></li>
+        <li><a href="https://github.com/Leolojo" target="_blank">GitHub</a></li>
       </ul>
     </div>
   </nav>
@@ -406,7 +34,7 @@
       </p>
       <div class="hero-cta">
         <a href="#extensions" class="btn btn-primary">View Extensions</a>
-        <a href="https://github.com/YOUR_USERNAME" class="btn btn-ghost" target="_blank">GitHub ↗</a>
+        <a href="https://github.com/Leolojo" class="btn btn-ghost" target="_blank">GitHub ↗</a>
       </div>
     </section>
 
@@ -442,22 +70,18 @@
           </div>
           <div class="ext-actions">
             <span class="ext-status">Active</span>
-            <a href="https://chrome.google.com/webstore" class="btn btn-primary" target="_blank" style="font-size:11px; padding: 8px 16px;">
-              Install ↗
-            </a>
-            <a href="privacy/snippet-manager.html" class="btn btn-ghost" style="font-size:11px; padding: 8px 16px;">
-              Privacy Policy
-            </a>
+            <a href="https://chrome.google.com/webstore" class="btn btn-primary btn-sm" target="_blank">Install ↗</a>
+            <a href="privacy/snippet-manager.html" class="btn btn-ghost btn-sm">Privacy Policy</a>
           </div>
         </div>
 
-        <!-- Placeholder for future extension -->
-        <div class="ext-card" style="opacity:0.45; pointer-events:none;">
+        <!-- Placeholder -->
+        <div class="ext-card dim">
           <div>
             <div class="ext-tags">
               <span class="tag">Coming Soon</span>
             </div>
-            <h3 class="ext-name" style="font-style:italic; color: var(--text-dim);">Next Extension</h3>
+            <h3 class="ext-name muted">Next Extension</h3>
             <p class="ext-desc">More tools in the works. Check back soon.</p>
           </div>
         </div>
@@ -477,7 +101,7 @@
         <a href="privacy/snippet-manager.html" class="policy-item">
           <div class="policy-item-left">
             <span class="policy-item-name">Snippet Manager</span>
-            <span class="policy-item-meta">Last updated · <!-- DATE --> 2024</span>
+            <span class="policy-item-meta">Last updated · 8 March 2025</span>
           </div>
           <span class="policy-arrow">→</span>
         </a>
@@ -487,10 +111,10 @@
   </main>
 
   <footer class="wrap">
-    <p>© 2024 YOUR_NAME. Built with plain HTML. Hosted on GitHub Pages.</p>
+    <p>© 2026 Leo Fyregård. Built with plain HTML. Hosted on GitHub Pages.</p>
     <div class="footer-links">
-      <a href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
-      <a href="mailto:you@example.com">Contact</a>
+      <a href="https://github.com/Leolojo" target="_blank">GitHub</a>
+      <a href="mailto:L.Fyregard@hotmail.com">Contact</a>
     </div>
   </footer>
 

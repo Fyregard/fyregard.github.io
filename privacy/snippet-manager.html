@@ -7,284 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0d0f14;
-      --surface:   #13161d;
-      --border:    #1f2430;
-      --amber:     #f5a623;
-      --amber-dim: #c27d0e;
-      --muted:     #4a5060;
-      --text:      #d4d8e2;
-      --text-dim:  #7a8090;
-      --mono:      'JetBrains Mono', monospace;
-      --serif:     'DM Serif Display', serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--mono);
-      font-size: 14px;
-      line-height: 1.8;
-      min-height: 100vh;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.25;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13,15,20,0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav .wrap {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 28px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    nav a.back {
-      font-size: 12px;
-      color: var(--text-dim);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    nav a.back:hover { color: var(--amber); }
-    nav .sep { color: var(--muted); }
-    nav .crumb { font-size: 12px; color: var(--amber); }
-
-    /* LAYOUT */
-    .wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* HEADER */
-    .doc-header {
-      padding: 64px 0 48px;
-      border-bottom: 1px solid var(--border);
-    }
-    .doc-label {
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--amber);
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .doc-header h1 {
-      font-family: var(--serif);
-      font-size: clamp(28px, 5vw, 48px);
-      color: #fff;
-      font-weight: 400;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-    .doc-meta {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-    .doc-meta span { display: flex; align-items: center; gap: 6px; }
-    .doc-meta strong { color: var(--text); font-weight: 400; }
-
-    /* SUMMARY BOX */
-    .summary-box {
-      margin: 40px 0;
-      padding: 28px;
-      background: rgba(245,166,35,0.06);
-      border: 1px solid rgba(245,166,35,0.2);
-      border-radius: 4px;
-    }
-    .summary-box .summary-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      color: var(--amber);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .summary-box p {
-      font-size: 13px;
-      color: var(--text);
-      line-height: 1.8;
-    }
-    .summary-points {
-      list-style: none;
-      margin-top: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .summary-points li {
-      font-size: 12px;
-      color: var(--text-dim);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .summary-points li .icon { color: var(--amber); flex-shrink: 0; }
-
-    /* TOC */
-    .toc {
-      margin: 0 0 48px;
-      padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .toc-title { font-size: 11px; letter-spacing: 0.14em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 14px; }
-    .toc ol { list-style: none; counter-reset: toc; }
-    .toc ol li { counter-increment: toc; }
-    .toc ol li a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 6px 0;
-      text-decoration: none;
-      font-size: 12px;
-      color: var(--text-dim);
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s;
-    }
-    .toc ol li a::before {
-      content: counter(toc, decimal-leading-zero);
-      color: var(--amber);
-      font-size: 10px;
-      min-width: 22px;
-    }
-    .toc ol li a:hover { color: var(--text); }
-
-    /* CONTENT */
-    .doc-content { padding: 20px 0 80px; }
-
-    .policy-section {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .policy-section:last-child { border-bottom: none; }
-
-    .ps-header {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-    .ps-num { font-size: 11px; color: var(--amber); letter-spacing: 0.1em; min-width: 28px; }
-    .ps-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      color: #fff;
-      font-weight: 400;
-    }
-
-    p { color: var(--text-dim); font-size: 13px; line-height: 1.9; margin-bottom: 16px; }
-    p:last-child { margin-bottom: 0; }
-    p strong { color: var(--text); font-weight: 600; }
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 12px;
-    }
-    .data-table th {
-      text-align: left;
-      padding: 10px 16px;
-      background: rgba(245,166,35,0.08);
-      color: var(--amber);
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-    }
-    .data-table td {
-      padding: 12px 16px;
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      vertical-align: top;
-      line-height: 1.6;
-    }
-    .data-table tr:hover td { background: rgba(255,255,255,0.02); }
-    .data-table td:first-child { color: var(--text); font-weight: 600; }
-
-    .highlight-list {
-      list-style: none;
-      margin: 16px 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .highlight-list li {
-      font-size: 12px;
-      color: var(--text-dim);
-      padding: 12px 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--amber);
-      border-radius: 2px;
-      line-height: 1.7;
-    }
-    .highlight-list li strong { color: var(--text); }
-
-    .contact-box {
-      margin-top: 24px;
-      padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .contact-box a { color: var(--amber); text-decoration: none; }
-    .contact-box a:hover { text-decoration: underline; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 0;
-    }
-    footer .wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    footer p { font-size: 11px; color: var(--muted); margin: 0; }
-    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--amber); }
-  </style>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
 
   <nav>
-    <div class="wrap">
+    <div class="wrap breadcrumb">
       <a class="back" href="../index.html">← Portfolio</a>
       <span class="sep">/</span>
       <span class="crumb">Privacy · Snippet Manager</span>
@@ -297,8 +25,8 @@
       <p class="doc-label">// privacy policy</p>
       <h1>Snippet Manager</h1>
       <div class="doc-meta">
-        <span>Effective <strong>January 1, 2024</strong></span>
-        <span>Last updated <strong>January 1, 2024</strong></span>
+        <span>Effective <strong>8 March 2026</strong></span>
+        <span>Last updated <strong>8 March 2026</strong></span>
         <span>Version <strong>1.0</strong></span>
       </div>
     </header>
@@ -324,7 +52,7 @@
         <li><a href="#google-drive">Google Drive Integration</a></li>
         <li><a href="#permissions">Chrome Permissions</a></li>
         <li><a href="#third-parties">Third-Party Services</a></li>
-        <li><a href="#data-retention">Data Retention & Deletion</a></li>
+        <li><a href="#data-retention">Data Retention &amp; Deletion</a></li>
         <li><a href="#security">Security</a></li>
         <li><a href="#changes">Changes to This Policy</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -333,21 +61,21 @@
 
     <div class="doc-content">
 
-      <!-- 1 -->
       <div class="policy-section" id="overview">
         <div class="ps-header">
           <span class="ps-num">01</span>
           <h2 class="ps-title">Overview</h2>
         </div>
         <p>
-          Snippet Manager ("the Extension", "we", "us") is a Chrome browser extension that allows developers to save, preview, and organise HTML, CSS, and JavaScript code snippets. This Privacy Policy explains how the Extension handles your information.
+          Snippet Manager ("the Extension", "we", "us") is a Chrome browser extension that allows developers to save,
+          preview, and organise HTML, CSS, and JavaScript code snippets. This Privacy Policy explains how the Extension handles your information.
         </p>
         <p>
-          <strong>The short version:</strong> we do not collect, store, transmit, or share any personal information. All data remains on your device or in your own Google Drive account.
+          <strong>The short version:</strong> we do not collect, store, transmit, or share any personal information.
+          All data remains on your device or in your own Google Drive account.
         </p>
       </div>
 
-      <!-- 2 -->
       <div class="policy-section" id="data-collected">
         <div class="ps-header">
           <span class="ps-num">02</span>
@@ -356,11 +84,7 @@
         <p>The Extension does <strong>not</strong> collect any of the following:</p>
         <table class="data-table">
           <thead>
-            <tr>
-              <th>Data Type</th>
-              <th>Collected?</th>
-              <th>Notes</th>
-            </tr>
+            <tr><th>Data Type</th><th>Collected?</th><th>Notes</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -392,24 +116,23 @@
         </table>
       </div>
 
-      <!-- 3 -->
       <div class="policy-section" id="google-drive">
         <div class="ps-header">
           <span class="ps-num">03</span>
           <h2 class="ps-title">Google Drive Integration</h2>
         </div>
         <p>
-          Google Drive sync is an <strong>optional</strong> feature. If you enable it, the Extension uses the Google Drive API to read and write a dedicated folder containing your snippet data.
+          Google Drive sync is an <strong>optional</strong> feature. If you enable it, the Extension uses the Google Drive API
+          to read and write a dedicated folder containing your snippet data.
         </p>
         <ul class="highlight-list">
           <li><strong>Scope of access:</strong> The Extension requests only the <code>drive.file</code> scope, which limits access to files it creates. It cannot read or modify other files in your Drive.</li>
           <li><strong>Data flow:</strong> Snippet data travels directly between your browser and Google's servers using your OAuth token. It does not pass through any server we control.</li>
-          <li><strong>Revocation:</strong> You can revoke Drive access at any time via your <a href="https://myaccount.google.com/permissions" target="_blank" style="color:var(--amber)">Google Account permissions page</a>.</li>
-          <li><strong>Google's policies:</strong> Use of Google Drive is subject to <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--amber)">Google's Privacy Policy</a>.</li>
+          <li><strong>Revocation:</strong> You can revoke Drive access at any time via your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions page</a>.</li>
+          <li><strong>Google's policies:</strong> Use of Google Drive is subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</li>
         </ul>
       </div>
 
-      <!-- 4 -->
       <div class="policy-section" id="permissions">
         <div class="ps-header">
           <span class="ps-num">04</span>
@@ -434,25 +157,25 @@
         <p>No host permissions, tabs access, or broad web access is requested.</p>
       </div>
 
-      <!-- 5 -->
       <div class="policy-section" id="third-parties">
         <div class="ps-header">
           <span class="ps-num">05</span>
           <h2 class="ps-title">Third-Party Services</h2>
         </div>
         <p>
-          The only external service the Extension interacts with is the Google Drive API, and only when you opt in to sync. We do not integrate with any analytics platforms, advertising networks, crash reporting tools, or other third-party services.
+          The only external service the Extension interacts with is the Google Drive API, and only when you opt in to sync.
+          We do not integrate with any analytics platforms, advertising networks, crash reporting tools, or other third-party services.
         </p>
       </div>
 
-      <!-- 6 -->
       <div class="policy-section" id="data-retention">
         <div class="ps-header">
           <span class="ps-num">06</span>
-          <h2 class="ps-title">Data Retention & Deletion</h2>
+          <h2 class="ps-title">Data Retention &amp; Deletion</h2>
         </div>
         <p>
-          Because we do not collect or store any data on our end, there is nothing for us to retain or delete. Your snippet data lives in two places, both fully under your control:
+          Because we do not collect or store any data on our end, there is nothing for us to retain or delete.
+          Your snippet data lives in two places, both fully under your control:
         </p>
         <ul class="highlight-list">
           <li><strong>Browser storage:</strong> Uninstalling the Extension removes all locally stored snippet data from your browser.</li>
@@ -460,35 +183,30 @@
         </ul>
       </div>
 
-      <!-- 7 -->
       <div class="policy-section" id="security">
         <div class="ps-header">
           <span class="ps-num">07</span>
           <h2 class="ps-title">Security</h2>
         </div>
         <p>
-          The Extension does not transmit your data to any server we control, which eliminates the most common attack surface for data breaches. OAuth tokens used for Google Drive are managed by the Chrome identity API and are never exposed to our code in plain text.
+          The Extension does not transmit your data to any server we control, which eliminates the most common attack surface for data breaches.
+          OAuth tokens used for Google Drive are managed by the Chrome identity API and are never exposed to our code in plain text.
         </p>
-        <p>
-          If you discover a security vulnerability, please contact us at the address below.
-        </p>
+        <p>If you discover a security vulnerability, please contact us at the address below.</p>
       </div>
 
-      <!-- 8 -->
       <div class="policy-section" id="changes">
         <div class="ps-header">
           <span class="ps-num">08</span>
           <h2 class="ps-title">Changes to This Policy</h2>
         </div>
         <p>
-          If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page and, where appropriate, notify users via the Extension's update notes in the Chrome Web Store.
+          If we make material changes to this privacy policy, we will update the "Last updated" date at the top of this page
+          and, where appropriate, notify users via the Extension's update notes in the Chrome Web Store.
         </p>
-        <p>
-          Continued use of the Extension after a policy update constitutes acceptance of the revised terms.
-        </p>
+        <p>Continued use of the Extension after a policy update constitutes acceptance of the revised terms.</p>
       </div>
 
-      <!-- 9 -->
       <div class="policy-section" id="contact">
         <div class="ps-header">
           <span class="ps-num">09</span>
@@ -496,10 +214,10 @@
         </div>
         <p>Questions about this policy? Reach out:</p>
         <div class="contact-box">
-          <p style="margin:0; font-size:13px; color: var(--text);">
-            <strong>YOUR_NAME</strong><br />
-            <a href="mailto:you@example.com">you@example.com</a><br />
-            <a href="https://github.com/YOUR_USERNAME" target="_blank">github.com/YOUR_USERNAME</a>
+          <p>
+            <strong>Leo Fyregård</strong><br />
+            <a href="mailto:L.Fyregard@hotmail.com">L.Fyregard@hotmail.com</a><br />
+            <a href="https://github.com/Leolojo" target="_blank">github.com/Leolojo</a>
           </p>
         </div>
       </div>
@@ -509,7 +227,7 @@
 
   <footer>
     <div class="wrap">
-      <p>© 2024 YOUR_NAME · <a href="../index.html">Portfolio</a></p>
+      <p>© 2026 Leo Fyregård · <a href="../index.html">Portfolio</a></p>
       <p>Snippet Manager Privacy Policy · v1.0</p>
     </div>
   </footer>
