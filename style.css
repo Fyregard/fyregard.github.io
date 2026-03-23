@@ -412,8 +412,76 @@ p strong { color: var(--text); font-weight: 600; }
 }
 
 /* ── Responsive ── */
+
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+  /* Nav */
+  nav ul { gap: 16px; }
+
+  /* Hero */
+  .hero { padding: 72px 0 56px; }
+
+  /* Sections */
+  section { padding: 60px 0; }
+  .section-header { gap: 12px; margin-bottom: 36px; }
+  .section-title { font-size: 24px; }
+
+  /* Privacy pages */
+  .doc-header { padding: 48px 0 36px; }
+  .summary-box { margin: 28px 0; padding: 20px; }
+  .toc { margin: 0 0 32px; padding: 20px; }
+  .policy-section { padding: 36px 0; }
+  .doc-content { padding: 16px 0 60px; }
+}
+
+/* ≤ 600px — cards and footer (existing rules) */
 @media (max-width: 600px) {
   .ext-card { grid-template-columns: 1fr; }
   .ext-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
   footer { flex-direction: column; }
+}
+
+/* Mobile (≤ 480px) — overrides tablet where needed */
+@media (max-width: 480px) {
+  /* Layout */
+  .wrap { padding: 0 16px; }
+
+  /* Nav */
+  nav .wrap { padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+  .nav-brand { font-size: 12px; }
+  nav ul { gap: 12px; }
+
+  /* Hero */
+  .hero { padding: 48px 0 40px; }
+  .hero-cta { margin-top: 28px; }
+
+  /* Sections */
+  section { padding: 40px 0; }
+  .section-header { margin-bottom: 24px; gap: 10px; }
+  .section-title { font-size: 22px; }
+
+  /* Extension cards */
+  .ext-card { padding: 20px; }
+
+  /* Footer */
+  footer { padding: 24px 0; }
+
+  /* Privacy pages — doc header */
+  .doc-header { padding: 32px 0 24px; }
+  .doc-meta { flex-direction: column; gap: 6px; }
+
+  /* Privacy pages — summary, toc, sections */
+  .summary-box { margin: 20px 0; padding: 16px; }
+  .toc { margin: 0 0 24px; padding: 16px; }
+  .policy-section { padding: 28px 0; }
+  .ps-header { margin-bottom: 20px; }
+  .doc-content { padding: 12px 0 48px; }
+
+  /* Data tables — horizontal scroll on overflow */
+  .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table th { padding: 8px 10px; }
+  .data-table td { padding: 10px 12px; }
+
+  /* Contact box */
+  .contact-box { padding: 16px; }
 }
